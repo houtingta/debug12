@@ -1,5 +1,6 @@
 package com.ascending.learning.debug.model;
 
+//Create a model to match the database table - department
 public class Department {
 
     public Department() {}
@@ -22,11 +23,15 @@ public class Department {
 
     public void setId(long id) {this.id = id; }
 
+    public String getName() { return name; }
+
     public void setName(String name) {this.name = name; }
+
+    public String getDescription() { return description; }
 
     public void setDescription(String description) {this.description = description; }
 
-    public void setLocation(String location) {this.location = location; }
+    public String getLocation() { return location; }
 
-    public String getName() { return name; }
+    public void setLocation(String location) {this.location = location; }
 }

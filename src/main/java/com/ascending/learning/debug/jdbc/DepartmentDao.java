@@ -1,12 +1,15 @@
 package com.ascending.learning.debug.jdbc;
 
 import com.ascending.learning.debug.model.Department;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentDao {
+    private Logger logger = LoggerFactory.getLogger(getClass());
     //Step 1: Put database information
     static final String DBURL = "jdbc:postgresql://localhost:5430/supermarket";
     static final String USER = "admin";
@@ -20,12 +23,15 @@ public class DepartmentDao {
         try {
             //STEP 2: Open a connection
             System.out.println("Connecting to database...");
+            logger.debug("Connercting to database...");
             conn = DriverManager.getConnection(DBURL, USER, PASS);
             //STEP 3: Execute a query
             System.out.println("Creating statement...");
+            logger.info("Creating statement...");
             stmt = conn.createStatement();
             String sql;
             sql = "SELECT * FROM department";
+            logger.warn(sql);
             rs = stmt.executeQuery(sql);
             //STEP 4: Extract data from result set
             while(rs.next()) {
@@ -60,9 +66,11 @@ public class DepartmentDao {
 
         return departments;
 
-        }
+    }
+
+//        Normal Test: Print out (Not good
     public static void main(String[] args) {
         DepartmentDao departmentDao = new DepartmentDao();
-        System.out.println(departmentDao.getDepartments());
+        System.out.println(departmentDao.getDepartments().size());
     }
 }

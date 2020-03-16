@@ -21,19 +21,41 @@
   </properties>
 
   <dependencies>
+
+    <!--Logger-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.26</version>
+    </dependency>
+
+    <!--JUnit-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
-    <!--postgresql JDBC-->
+    <!--Postgresql-->
+    <!--including JDBC library-->
     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.2.10</version>
+    </dependency>
+
+    <!--Hibernate-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.3.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.v-ladynev</groupId>
+      <artifactId>fluent-hibernate-core</artifactId>
+      <version>0.3.1</version>
     </dependency>
 
   </dependencies>
