@@ -1,22 +1,34 @@
 package com.ascending.learning.debug.model;
 
+import org.hibernate.annotations.Table;
+
+import javax.persistence.*;
+
 //Create a model to match the database table - department
+@Entity
+@Table(name = "department")
+
 public class Department {
 
     public Department() {}
 
-    public Department(String name, String description, String location){
+        public Department(String name, String description, String location){
         this.name = name;
         this.description = description;
         this.location = location;
     }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "location")
     private String location;
 
     public long getID() { return id; }
