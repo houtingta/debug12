@@ -1,7 +1,5 @@
 package com.ascending.learning.debug.model;
 
-import jdk.nashorn.internal.codegen.ClassEmitter;
-
 public class Employee {
     public Employee() {}
 
@@ -69,5 +67,5 @@ public class Employee {
     public long getDepartmentId() { return departmentId; }
 
     public void setDepartmentId(long departmentId) { this.departmentId = departmentId; }
-    
+
 }

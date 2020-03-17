@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentDao {
+public class DepartmentJDBCDao {
     private Logger logger = LoggerFactory.getLogger(getClass());
     //Step 1: Put database information
     static final String DBURL = "jdbc:postgresql://localhost:5430/supermarket";
@@ -70,7 +70,7 @@ public class DepartmentDao {
 
 //        Normal Test: Print out (Not good
     public static void main(String[] args) {
-        DepartmentDao departmentDao = new DepartmentDao();
-        System.out.println(departmentDao.getDepartments().size());
+        DepartmentJDBCDao departmentJDBCDao = new DepartmentJDBCDao();
+        System.out.println(departmentJDBCDao.getDepartments().size());
     }
 }

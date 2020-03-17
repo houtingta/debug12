@@ -9,18 +9,19 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class DepartmentDaoTest {
-    private DepartmentDao departmentDao;
+public class DepartmentJDBCDaoTest {
+    private DepartmentJDBCDao departmentJDBCDao;
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     //Setup
     @Before
-    public void init () {departmentDao = new DepartmentDao();}
+    public void init () {
+        departmentJDBCDao = new DepartmentJDBCDao();}
 
     //Unit test method
     @Test
     public void getDepartmentsTest(){
-        List<Department> departments = departmentDao.getDepartments();
+        List<Department> departments = departmentJDBCDao.getDepartments();
         int expectedNumOfDept = 4;
         logger.debug("Connercting to database...");
 //        for(Department department : departments){
