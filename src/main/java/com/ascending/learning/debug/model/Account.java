@@ -17,4 +17,21 @@ public class Account {
     private float balance;
 
     private long employeeId;
+
+    public long getID() { return id; }
+
+    public void setID(long id) { this.id = id; }
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
+
+    public float getBalance() { return balance; }
+
+    public void setBalance(float balance) { this.balance = balance; }
+
+    public long getEmployeeId() { return employeeId; }
+
+    public void setEmployeeId(long employeeId) { this.employeeId = employeeId; }
+
 }
