@@ -44,7 +44,7 @@ public class EmployeeJDBCDao {
                 String address = rs.getString("address");
                 int age = rs.getInt("age");
                 float salary = rs.getFloat("salary");
-                long departmentId = rs.getLong("department_id");
+                Long departmentId = rs.getLong("department_id");
 
                 //Fill the object
                 Employee employee = new Employee();
@@ -56,7 +56,8 @@ public class EmployeeJDBCDao {
                 employee.setAddress(address);
                 employee.setAge(age);
                 employee.setSalary(salary);
-                employee.setDepartmentId(departmentId);
+                //employee.setDepartment(departmentId);
+                employees.add(employee);
             }
         }
         catch(SQLException e){
@@ -78,10 +79,10 @@ public class EmployeeJDBCDao {
 
     }
 
-    //        Normal Test: Print out (Not good
-    public static void main(String[] args) {
-        EmployeeJDBCDao employeeJDBCDao = new EmployeeJDBCDao();
-        System.out.println(employeeJDBCDao.getEmployees().size());
-    }
+//    //        Normal Test: Print out (Not good
+//    public static void main(String[] args) {
+//        EmployeeJDBCDao employeeJDBCDao = new EmployeeJDBCDao();
+//        System.out.println(employeeJDBCDao.getEmployees().size());
+//    }
 }
 

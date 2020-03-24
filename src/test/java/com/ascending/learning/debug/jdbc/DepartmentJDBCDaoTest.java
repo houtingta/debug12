@@ -13,21 +13,41 @@ public class DepartmentJDBCDaoTest {
     private DepartmentJDBCDao departmentJDBCDao;
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    //Setup
+    //Set up
     @Before
     public void init () {
-        departmentJDBCDao = new DepartmentJDBCDao();}
+        departmentJDBCDao = new DepartmentJDBCDao();
+    }
 
-    //Unit test method
+    //Test get method
     @Test
     public void getDepartmentsTest(){
         List<Department> departments = departmentJDBCDao.getDepartments();
+        //check the number of records
         int expectedNumOfDept = 4;
-        logger.debug("Connercting to database...");
+
 //        for(Department department : departments){
 //            System.out.println(department);
 //        }
 
         Assert.assertEquals(expectedNumOfDept, departments.size());
+    }
+
+    //Test insert method
+    @Test
+    public void insertDepartmentsTest(){
+
+    }
+
+    //Test update method
+    @Test
+    public void updateDepartmentsTest(){
+
+    }
+
+    //Test delete method
+    @Test
+    public void deleteDepartmentsTest(){
+
     }
 }

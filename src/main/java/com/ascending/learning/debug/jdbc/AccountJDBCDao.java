@@ -15,6 +15,38 @@ public class AccountJDBCDao {
     static final String USER = "admin";
     static final String PASS = "password";
 
+    public void insertAccounts(String sql) {
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            //STEP 2: Open a connection
+//            System.out.println("Connecting to database...");
+            logger.debug("Connercting to database...");
+            conn = DriverManager.getConnection(DBURL, USER, PASS);
+            //STEP 3: Execute a query
+            logger.info("Creating statement...");
+            stmt = conn.createStatement();
+            logger.warn(sql);
+            rs = stmt.executeQuery(sql);
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        finally{
+            //STEP 6: finally block used to close resources
+            try {
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            }
+            catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+
     public List<Account> getAccounts() {
         List<Account> accounts = new ArrayList();
         Connection conn = null;
@@ -39,7 +71,7 @@ public class AccountJDBCDao {
                 Long id  = rs.getLong("id");
                 String type = rs.getString("type");
                 float balance = rs.getFloat("balance");
-                long employeeId = rs.getLong("employee_Id");
+                Long employeeId = rs.getLong("employee_Id");
                 //Fill the object
                 Account account = new Account();
                 account.setID(id);
@@ -53,7 +85,7 @@ public class AccountJDBCDao {
             e.printStackTrace();
         }
         finally {
-            //STEP 6: finally block used to close resources
+            //0STEP 6: finally block used to close resources
             try {
                 if(rs != null) rs.close();
                 if(stmt != null) stmt.close();
@@ -68,9 +100,15 @@ public class AccountJDBCDao {
 
     }
 
-    //        Normal Test: Print out (Not good
-    public static void main(String[] args) {
-        AccountJDBCDao accountJDBCDao = new AccountJDBCDao();
-        System.out.println(accountJDBCDao.getAccounts().size());
-    }
+//    //        Normal Test: Print out (Not good
+//    public static void main(String[] args) {
+//        AccountJDBCDao accountJDBCDao = new AccountJDBCDao();
+//
+////        //Insert data demo
+////        String sql = "INSERT INTO account(type, balance, employee_id) VALUES('normal', 50.00, 1)";
+////        accountJDBCDao.insertAccounts(sql);
+//
+//        //Retrieve data demo
+//        System.out.println(accountJDBCDao.getAccounts().size());
+//    }
 }

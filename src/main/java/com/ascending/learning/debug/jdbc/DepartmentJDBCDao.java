@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentJDBCDao {
+    //Logger Practice
     private Logger logger = LoggerFactory.getLogger(getClass());
+
     //Step 1: Put database information
     static final String DBURL = "jdbc:postgresql://localhost:5430/supermarket";
     static final String USER = "admin";
@@ -22,15 +24,22 @@ public class DepartmentJDBCDao {
         ResultSet rs = null;
         try {
             //STEP 2: Open a connection
-            System.out.println("Connecting to database...");
-            logger.debug("Connercting to database...");
+            //System.out.println("Connecting to database...");
+            //using logger to show by debug level
+            logger.debug("Connecting to database...");
+
             conn = DriverManager.getConnection(DBURL, USER, PASS);
+
             //STEP 3: Execute a query
-            System.out.println("Creating statement...");
+            //System.out.println("Creating statement...");
+            //using logger to show by info level
             logger.info("Creating statement...");
+
             stmt = conn.createStatement();
             String sql;
             sql = "SELECT * FROM department";
+
+            //using logger to show by warn level
             logger.warn(sql);
             rs = stmt.executeQuery(sql);
             //STEP 4: Extract data from result set
@@ -68,9 +77,10 @@ public class DepartmentJDBCDao {
 
     }
 
-//        Normal Test: Print out (Not good
+//        Normal Test: Print out (Not good)
     public static void main(String[] args) {
         DepartmentJDBCDao departmentJDBCDao = new DepartmentJDBCDao();
         System.out.println(departmentJDBCDao.getDepartments().size());
     }
+
 }

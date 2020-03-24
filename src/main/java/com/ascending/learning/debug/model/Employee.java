@@ -1,9 +1,13 @@
 package com.ascending.learning.debug.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
     public Employee() {}
-
-    public Employee(String name, String firstName, String lastName, String email, String address, int age, float salary, long departmentId){
+    public Employee(String name, String firstName, String lastName, String email, String address, int age, float salary, Department department){
         this.name = name;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -11,26 +15,44 @@ public class Employee {
         this.address = address;
         this.age = age;
         this.salary = salary;
-        this.departmentId = departmentId;
+        this.department = department;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "age")
     private int age;
 
+    @Column(name = "salary")
     private float salary;
 
-    private long departmentId;
+//    @Column(name = "department_Id")
+//    private long departmentId;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
+    //fetch_type=lazy select * from department
+    //HQL select e from Employee as e join fetch e.department where e.department.id = :id;
+    //native sql fetch_type=eager select * from employee as e left join department as d on e.department_id = d.id
 
     public long getId() { return id; }
 
@@ -64,8 +86,8 @@ public class Employee {
 
     public void setSalary(float salary) { this.salary = salary; }
 
-    public long getDepartmentId() { return departmentId; }
+    public Department getDepartment() { return department; }
 
-    public void setDepartmentId(long departmentId) { this.departmentId = departmentId; }
+    public void setDepartment(Department department) { this.department = department; }
 
 }
