@@ -20,20 +20,38 @@
     <flyway.version>6.3.0</flyway.version>
   </properties>
 
-  <dependencies>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.6.RELEASE</version>
+    <relativePath />
+  </parent>
 
-    <!--Logger-->
+  <dependencies>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.26</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!--JUnit-->
+<!--    &lt;!&ndash;Logger&ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-simple</artifactId>-->
+<!--      <version>1.7.26</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash;JUnit&ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>junit</groupId>-->
+<!--      <artifactId>junit</artifactId>-->
+<!--      <version>4.12</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+
+    <!--Spring boot test-->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
 

@@ -8,10 +8,14 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+//For example: DepartmentDao dd = new DepartmentDaoImpl();
+@Repository
 public class DepartmentDaoImpl implements DepartmentDao{
 
     private Logger logger = LoggerFactory.getLogger(getClass());
